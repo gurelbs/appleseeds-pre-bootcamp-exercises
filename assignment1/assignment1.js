@@ -134,7 +134,7 @@ const quiz = () => {
             } else if (finelScore >= 350 && finelScore <= 400) {
                 philosopher = 'classic... You remind me the classical Greek philosopher - Socrates!'
             }
-            console.log(`${spaceing}\n\tQuiz results\n${philosopher}\n${spaceing}`)
+            console.log(`${spaceing}\n\tQuiz results\n${spaceing}\n${philosopher}\n${spaceing}`)
         }
         answer()
 
