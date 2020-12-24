@@ -3,7 +3,11 @@ const readline = require('readline-sync');
 
 const restaurantSelector = () => {
     let restaurantType = ['Italian', 'Chinese', 'American', 'French'];
-    let numberOfPeople = readline.question('\nso...you want to eat something in Tel-aviv...\nHow many people are you going with?: \t')
+    let numberOfPeople =  readline.question('\nso...you want to eat something in Tel-aviv...\nHow many people are you going with?\t', {
+        limit: /^[0-9]*$/,
+        limitMessage: '\nSorry, $<lastInput> is not valid number. try again'
+      })
+    
     let kosher = readline.keyInYN('\nShould it be Kosher?: \t')
     if (kosher){
         var mehadrin = readline.keyInYN('\nshould it be Kashrut Lemehadrin?: \t')
@@ -51,7 +55,7 @@ const restaurantSelector = () => {
         }
     }
     let answer = () => {
-        console.log(`\nO.k! i see you want to eat with ${parseInt(numberOfPeople)} friends at ${restaurantTypeName()}.\nalso, you ${kashrut()}. \n\n\tMy recommendation is to go to ${restaurantName()}`);
+        console.log(`\nO.k! i see you want to eat with ${numberOfPeople} friends at ${restaurantTypeName()}.\nalso, you ${kashrut()}. \n\n\tMy recommendation is to go to ${restaurantName()}`);
     }
     answer()
 }
