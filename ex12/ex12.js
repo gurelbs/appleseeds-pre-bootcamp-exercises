@@ -2,7 +2,7 @@ let readline = require('readline-sync');
 
 let str = readline.question('\nplease write something:\t', {
     limit: str => str.length > 0,
-    limitMessage: `Sorry, '$<lastInput>' it's not valid. You must type at least 1 characters. try again...`
+    limitMessage: `Sorry, '$<lastInput>' it's not valid. You must type at least 1 character. try again...`
 })
 
 let vowel = () => {
