@@ -1,4 +1,4 @@
-var readline = require('readline-sync');
+let readline = require('readline-sync');
 
 let str = readline.question('\nplease write something:\t', {
     limit: str => str.length > 0,
