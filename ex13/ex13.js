@@ -1,14 +1,30 @@
 let rl = require('readline-sync');
 
-let str = rl.question('\nplease write somthing:\t', {
-    limit: /^[a-zA-Z\s]*$/,
-    limitMessage: `\ninvalid. please try again...`
-});
+let userString = rl.question('\nplease write somthing:\t',{limit: str => str.length > 0, limitMessage:`\nyou can't check empty string...`});
+let err = `invalid\n(You have probably tried to test only a string that contains numbers, symbols, or spaces)`
 
-let longest = () => {
-    let words = str.split(' ').sort((a,b) => b.length - a.length);
-    let longest = words[0];
-    let space = '--------------------------------------------------------------------------------'
-    console.log(`\n${space}\nyour string: ${str}\n\nthe longest word in your string, is the word: ${longest} - with ${longest.length} characters.\n${space}`);
+let longestWord = str => {
+    let newArr = []
+    let regEx = /^[a-zA-Z]*$/
+    let strToArr = str
+        .split(' ')
+        .sort((a,b) => b.length - a.length);
+    strToArr.forEach(element => {
+        if (regEx.test(element) === true){
+            newArr.push(element)
+        } 
+    });
+    if (strToArr !== ([] || undefined)){
+        newArr
+        .filter(Boolean)
+        .sort((a,b) => b.length - a.length);
+    }
+        return newArr[0] === undefined ? err : newArr[0]  
 }
-longest()
+let longest = longestWord(userString)
+let space = '--------------------------------------------------------------------------------'
+if (longest !== err) {
+    console.log(`\n${space}\n\nthe longest word in your string, is the word:\t${longest}\n\n${space}`);
+} else {
+    console.log(err);
+}
